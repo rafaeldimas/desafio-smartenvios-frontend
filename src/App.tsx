@@ -1,26 +1,23 @@
+import { Layout, theme } from 'antd';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './Layout/Header.tsx';
+import SideBar from './Layout/SideBar.tsx';
+import Content from './Layout/Content.tsx';
 
-function App() {
+const App: React.FC = () => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout style={{ minHeight: '100vh' }}>
+      <SideBar />
+      <Layout style={{ padding: '0 40px', background: colorBgContainer }}>
+        <Header />
+        <Content />
+      </Layout>
+    </Layout>
   );
-}
+};
 
 export default App;
